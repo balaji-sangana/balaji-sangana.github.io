@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Education | Balaji Sangana</title>
+
+<style>
+:root{
+  --bg:#0a0a0a;
+  --card:#071c33;
+  --card2:#0a2540;
+  --text:#ffffff;
+  --muted:#c7c7c7;
+  --theme:#00ffff;
+}
+
+/* ===== GLOBAL ===== */
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Courier New",monospace;
+}
+a{text-decoration:none;color:inherit}
+
+/* ===== LOGO ===== */
+.logo{
+  position:fixed;
+  top:18px;
+  left:26px;
+  font-size:1.4rem;
+  font-weight:600;
+  color:var(--theme);
+  z-index:1002;
+}
+
+/* ===== NAV ===== */
+.navbar{
+  position:fixed;
+  top:0;
+  right:0;
+  padding:20px 30px;
+  display:none;
+  z-index:1000;
+}
+.navbar a{
+  margin-left:15px;
+  position:relative;
+}
+.navbar a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:2px;
+  background:var(--theme);
+  transition:.3s;
+}
+.navbar a:hover::after{width:100%}
+
+/* ===== MOBILE MENU ===== */
+.menu-btn{
+  position:fixed;
+  top:22px;
+  right:24px;
+  width:34px;
+  height:26px;
+  display:none;
+  flex-direction:column;
+  justify-content:space-between;
+  cursor:pointer;
+  z-index:1001;
+}
+.menu-btn span{
+  height:3px;
+  background:var(--theme);
+  transition:.4s;
+}
+.menu-btn.active span:nth-child(1){
+  transform:translateY(11px) rotate(45deg);
+}
+.menu-btn.active span:nth-child(2){opacity:0}
+.menu-btn.active span:nth-child(3){
+  transform:translateY(-11px) rotate(-45deg);
+}
+
+.menu-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(14px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transition:.4s;
+  z-index:1000;
+}
+.menu-overlay.active{
+  opacity:1;
+  visibility:visible;
+}
+.menu-nav a{
+  display:block;
+  font-size:2rem;
+  margin:18px 0;
+  color:var(--theme);
+  text-align:center;
+}
+
+/* ===== PAGE ===== */
+.education{
+  padding:120px 8% 80px;
+}
+.education h1{
+  color:var(--theme);
+  font-size:2.6rem;
+  margin-bottom:50px;
+}
+
+/* ===== TIMELINE ===== */
+.timeline{
+  display:flex;
+  flex-direction:column;
+  gap:30px;
+}
+
+.edu-card{
+  background:linear-gradient(90deg,var(--card),var(--card2));
+  padding:28px;
+  border-radius:12px;
+  border-left:4px solid var(--theme);
+}
+
+.edu-card h2{
+  font-size:1.4rem;
+  margin-bottom:6px;
+}
+
+.edu-degree{
+  color:var(--theme);
+  font-size:1.05rem;
+  margin-bottom:6px;
+}
+
+.edu-date{
+  color:var(--muted);
+  font-size:.95rem;
+  margin-bottom:14px;
+}
+
+.edu-desc{
+  color:#d4d4d4;
+  line-height:1.7;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(min-width:768px){
+  .navbar{display:block}
+}
+@media(max-width:767px){
+  .menu-btn{display:flex}
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGO -->
+<div class="logo">Balaji Sangana</div>
+
+<!-- NAV -->
+<nav class="navbar">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="education.html">Education</a>
+  <a href="experience.html">Experience</a>
+  <a href="skills.html">Skills</a>
+  <a href="projects.html">Projects</a>
+  <a href="resume.html">Resume</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<div class="menu-btn" id="menuBtn">
+  <span></span><span></span><span></span>
+</div>
+
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="education.html">Education</a>
+    <a href="experience.html">Experience</a>
+    <a href="skills.html">Skills</a>
+    <a href="projects.html">Projects</a>
+    <a href="resume.html">Resume</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+<!-- EDUCATION -->
+<section class="education">
+  <h1>Education</h1>
+
+  <div class="timeline">
+
+    <!-- BTECH -->
+    <div class="edu-card">
+      <h2>Bachelor of Technology (B.Tech)</h2>
+      <div class="edu-degree">Computer Science Engineering – Internet of Things (IoT)</div>
+      <div class="edu-date">September 2022 – In Progress</div>
+      <div class="edu-desc">
+        Currently pursuing B.Tech in Computer Science with specialization in IoT,
+        focusing on cybersecurity, embedded systems, networking, cloud integration,
+        and secure system design.
+        <br><br>
+        <strong>Institution:</strong> Parvatha Reddy Babul Reddy Visvodaya Institute of Technology & Science
+      </div>
+    </div>
+
+    <!-- IITM -->
+    <div class="edu-card">
+      <h2>Bachelor of Science (B.Sc) – Programming & Data Science</h2>
+      <div class="edu-degree">Indian Institute of Technology Madras (IITM)</div>
+      <div class="edu-date">Dropout</div>
+      <div class="edu-desc">
+        Enrolled in the IIT Madras B.Sc program in Programming and Data Science.
+        Discontinued to focus on core engineering education and hands-on cybersecurity work.
+      </div>
+    </div>
+
+    <!-- INTERMEDIATE -->
+    <div class="edu-card">
+      <h2>Intermediate (12th Grade)</h2>
+      <div class="edu-degree">MPC (Mathematics, Physics, Chemistry)</div>
+      <div class="edu-date">2020 – 2022</div>
+      <div class="edu-desc">
+        Completed intermediate education with strong emphasis on mathematics,
+        physics, and analytical problem-solving.
+        <br><br>
+        <strong>Institution:</strong> Narayana Junior College
+      </div>
+    </div>
+
+    <!-- SCHOOL -->
+    <div class="edu-card">
+      <h2>Secondary School (10th Grade)</h2>
+      <div class="edu-degree">SSC</div>
+      <div class="edu-date">2019 – 2020</div>
+      <div class="edu-desc">
+        Completed secondary school education with consistent academic performance
+        and early exposure to computers and technology.
+        <br><br>
+        <strong>Institution:</strong> Narayana High School
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+const btn=document.getElementById("menuBtn");
+const menu=document.getElementById("menuOverlay");
+
+btn.onclick=()=>{
+  btn.classList.toggle("active");
+  menu.classList.toggle("active");
+};
+
+document.querySelectorAll(".menu-nav a").forEach(a=>{
+  a.onclick=()=>{
+    btn.classList.remove("active");
+    menu.classList.remove("active");
+  };
+});
+</script>
+
+</body>
+</html>

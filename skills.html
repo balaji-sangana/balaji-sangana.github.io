@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skills | Balaji Sangana</title>
+
+<style>
+:root{
+  --bg:#0a0a0a;
+  --card:#071c33;
+  --card2:#0a2540;
+  --text:#ffffff;
+  --theme:#00ffff;
+}
+
+/* ===== GLOBAL ===== */
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Courier New",monospace;
+}
+a{text-decoration:none;color:inherit}
+
+/* ===== LOGO ===== */
+.logo{
+  position:fixed;
+  top:18px;
+  left:26px;
+  font-size:1.4rem;
+  font-weight:600;
+  color:var(--theme);
+  z-index:1002;
+}
+
+/* ===== NAV ===== */
+.navbar{
+  position:fixed;
+  top:0;
+  right:0;
+  padding:20px 30px;
+  display:none;
+  z-index:1000;
+}
+.navbar a{
+  margin-left:15px;
+  position:relative;
+}
+.navbar a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:2px;
+  background:var(--theme);
+  transition:.3s;
+}
+.navbar a:hover::after{width:100%}
+
+/* ===== MOBILE MENU ===== */
+.menu-btn{
+  position:fixed;
+  top:22px;
+  right:24px;
+  width:34px;
+  height:26px;
+  display:none;
+  flex-direction:column;
+  justify-content:space-between;
+  cursor:pointer;
+  z-index:1001;
+}
+.menu-btn span{
+  height:3px;
+  background:var(--theme);
+  transition:.4s;
+}
+.menu-btn.active span:nth-child(1){
+  transform:translateY(11px) rotate(45deg);
+}
+.menu-btn.active span:nth-child(2){opacity:0}
+.menu-btn.active span:nth-child(3){
+  transform:translateY(-11px) rotate(-45deg);
+}
+
+.menu-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(14px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transition:.4s;
+  z-index:1000;
+}
+.menu-overlay.active{
+  opacity:1;
+  visibility:visible;
+}
+.menu-nav a{
+  display:block;
+  font-size:2rem;
+  margin:18px 0;
+  color:var(--theme);
+  text-align:center;
+}
+
+/* ===== PAGE ===== */
+.skills{
+  padding:120px 8% 80px;
+}
+.skills h1{
+  color:var(--theme);
+  font-size:2.6rem;
+  margin-bottom:50px;
+}
+
+/* ===== SECTION ===== */
+.skill-section{
+  margin-bottom:70px;
+}
+.skill-title{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  margin-bottom:30px;
+}
+.skill-title h2{
+  font-size:1.3rem;
+  letter-spacing:3px;
+}
+.skill-title span{
+  flex:1;
+  height:2px;
+  background:rgba(255,255,255,.3);
+}
+
+/* ===== GRID ===== */
+.skill-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:28px;
+}
+.skill-item{
+  background:linear-gradient(90deg,var(--card),var(--card2));
+  padding:22px;
+  border-radius:10px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:12px;
+}
+.skill-item img{
+  width:64px;
+  height:64px;
+  object-fit:contain;
+  filter:drop-shadow(0 0 6px rgba(0,255,255,.15));
+}
+.skill-item span{
+  font-size:.95rem;
+  text-align:center;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(min-width:768px){ .navbar{display:block} }
+@media(max-width:767px){ .menu-btn{display:flex} }
+</style>
+</head>
+
+<body>
+
+<!-- LOGO -->
+<div class="logo">Balaji Sangana</div>
+
+<!-- NAV -->
+<nav class="navbar">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="education.html">Education</a>
+  <a href="experience.html">Experience</a>
+  <a href="projects.html">Projects</a>
+  <a href="skills.html">Skills</a>
+  <a href="resume.html">Resume</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<div class="menu-btn" id="menuBtn">
+  <span></span><span></span><span></span>
+</div>
+
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="education.html">Education</a>
+    <a href="experience.html">Experience</a>
+    <a href="projects.html">Projects</a>
+    <a href="skills.html">Skills</a>
+    <a href="resume.html">Resume</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+<section class="skills">
+  <h1>Skills</h1>
+
+  <!-- LANGUAGES & DATABASES -->
+  <div class="skill-section">
+    <div class="skill-title"><h2>LANGUAGES & DATABASES</h2><span></span></div>
+    <div class="skill-grid">
+      <div class="skill-item"><img src="https://www.python.org/static/community_logos/python-logo.png"><span>Python</span></div>
+      <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg"><span>C++</span></div>
+      <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg"><span>Java</span></div>
+      <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg"><span>HTML</span></div>
+      <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"><span>JavaScript</span></div>
+      <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg"><span>CSS</span></div>
+      <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/en/d/dd/MySQL_logo.svg"><span>MySQL</span></div>
+      <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Gnu-bash-logo.svg"><span>Bash</span></div>
+    </div>
+  </div>
+
+  <!-- FRAMEWORKS -->
+  <div class="skill-section">
+    <div class="skill-title"><h2>FRAMEWORKS</h2><span></span></div>
+    <div class="skill-grid">
+      <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Metasploit_logo.svg"><span>Metasploit</span></div>
+    </div>
+  </div>
+
+  <!-- WEB ANALYSIS PROGRAMS -->
+  <div class="skill-section">
+    <div class="skill-title"><h2>WEB ANALYSIS PROGRAMS</h2><span></span></div>
+    <div class="skill-grid">
+      <div class="skill-item"><img src="https://portswigger.net/content/images/logos/portswigger-logo.svg"><span>PortSwigger</span></div>
+      <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Burp_Suite_Logo.png"><span>Burp Suite</span></div>
+      <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/d/df/Wireshark_icon.svg"><span>Wireshark</span></div>
+      <div class="skill-item"><img src="https://nmap.org/images/sitelogo-nmap.svg"><span>Nmap</span></div>
+      <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/0/00/OWASP_ZAP_logo.svg"><span>OWASP ZAP</span></div>
+      <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Nessus_logo.svg"><span>Nessus</span></div>
+      <div class="skill-item"><img src="https://sqlmap.org/images/sqlmap_logo.png"><span>SQLmap</span></div>
+    </div>
+  </div>
+
+  <!-- GENERAL TOOLS -->
+  <div class="skill-section">
+    <div class="skill-title"><h2>GENERAL TOOLS</h2><span></span></div>
+    <div class="skill-grid">
+      <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Git-logo.svg"><span>Git</span></div>
+      <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png"><span>Linux</span></div>
+      <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg"><span>VS Code</span></div>
+    </div>
+  </div>
+
+</section>
+
+<script>
+const btn=document.getElementById("menuBtn");
+const menu=document.getElementById("menuOverlay");
+btn.onclick=()=>{
+  btn.classList.toggle("active");
+  menu.classList.toggle("active");
+};
+document.querySelectorAll(".menu-nav a").forEach(a=>{
+  a.onclick=()=>{
+    btn.classList.remove("active");
+    menu.classList.remove("active");
+  };
+});
+</script>
+
+</body>
+</html>

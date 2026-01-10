@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Balaji Sangana</title>
+
+<style>
+:root{
+  --bg:#0a0a0a;
+  --card:#071c33;
+  --card2:#0a2540;
+  --text:#ffffff;
+  --theme:#00ffff;
+}
+
+/* ===== GLOBAL ===== */
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Courier New",monospace;
+}
+a{text-decoration:none;color:inherit}
+
+/* ===== LOGO ===== */
+.logo{
+  position:fixed;
+  top:18px;
+  left:26px;
+  font-size:1.4rem;
+  font-weight:600;
+  color:var(--theme);
+  z-index:1002;
+}
+
+/* ===== NAV ===== */
+.navbar{
+  position:fixed;
+  top:0;
+  right:0;
+  padding:20px 30px;
+  display:none;
+  z-index:1000;
+}
+.navbar a{
+  margin-left:15px;
+  position:relative;
+}
+.navbar a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:2px;
+  background:var(--theme);
+  transition:.3s;
+}
+.navbar a:hover::after{width:100%}
+
+/* ===== MOBILE MENU ===== */
+.menu-btn{
+  position:fixed;
+  top:22px;
+  right:24px;
+  width:34px;
+  height:26px;
+  display:none;
+  flex-direction:column;
+  justify-content:space-between;
+  cursor:pointer;
+  z-index:1001;
+}
+.menu-btn span{
+  height:3px;
+  background:var(--theme);
+  transition:.4s;
+}
+.menu-btn.active span:nth-child(1){
+  transform:translateY(11px) rotate(45deg);
+}
+.menu-btn.active span:nth-child(2){opacity:0}
+.menu-btn.active span:nth-child(3){
+  transform:translateY(-11px) rotate(-45deg);
+}
+
+.menu-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(14px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transition:.4s;
+  z-index:1000;
+}
+.menu-overlay.active{
+  opacity:1;
+  visibility:visible;
+}
+.menu-nav a{
+  display:block;
+  font-size:2rem;
+  margin:18px 0;
+  color:var(--theme);
+  text-align:center;
+}
+
+/* ===== ABOUT ===== */
+.about{
+  padding:120px 7% 80px;
+}
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1.2fr;
+  gap:50px;
+  align-items:center;
+}
+.about h1{
+  color:var(--theme);
+  font-size:2.6rem;
+}
+.about p{
+  color:#ccc;
+  line-height:1.8;
+}
+
+/* ===== HACKER SVG ===== */
+.hacker svg{
+  width:100%;
+  max-width:420px;
+  filter:drop-shadow(0 0 25px rgba(0,255,255,.4));
+}
+
+/* ===== INTERESTS ===== */
+.interests{
+  margin-top:70px;
+}
+
+.interests-title{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  margin-bottom:32px;
+}
+.interests-title h2{
+  font-size:1.2rem;
+  letter-spacing:3px;
+}
+.interests-title span{
+  flex:1;
+  height:2px;
+  background:rgba(255,255,255,.3);
+}
+
+.interest-item{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  background:linear-gradient(90deg,var(--card),var(--card2));
+  padding:22px;
+  border-radius:8px;
+  margin-bottom:22px;
+}
+.interest-item span{
+  font-size:1.15rem;
+}
+
+/* ICON */
+.icon{
+  width:42px;
+  height:42px;
+}
+.icon svg{
+  width:100%;
+  height:100%;
+  fill:none;
+  stroke-width:2.2;
+}
+
+/* COLORS */
+.yellow svg{stroke:#fbbf24}
+.blue svg{stroke:#60a5fa}
+.pink svg{stroke:#ec4899}
+.green svg{stroke:#22c55e}
+.neon svg{stroke:#22d3ee}
+.red svg{stroke:#ef4444}
+.sky svg{stroke:#38bdf8}
+.gold svg{stroke:#facc15}
+
+/* ===== RESPONSIVE ===== */
+@media(min-width:768px){
+  .navbar{display:block}
+}
+@media(max-width:767px){
+  .menu-btn{display:flex}
+  .about-grid{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGO -->
+<div class="logo">Balaji Sangana</div>
+
+<!-- NAV -->
+<nav class="navbar">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="education.html">Education</a>
+  <a href="experience.html">Experience</a>
+  <a href="projects.html">Projects</a>
+  <a href="skills.html">Skills</a>
+  <a href="resume.html">Resume</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<div class="menu-btn" id="menuBtn">
+  <span></span><span></span><span></span>
+</div>
+
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="education.html">Education</a>
+    <a href="experience.html">Experience</a>
+    <a href="projects.html">Projects</a>
+    <a href="skills.html">Skills</a>
+    <a href="resume.html">Resume</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-grid">
+
+    <!-- HACKER SVG -->
+    <div class="hacker">
+      <svg viewBox="0 0 200 200">
+        <path d="M30 90 Q100 10 170 90" stroke="#00ffff" stroke-width="4"/>
+        <circle cx="100" cy="90" r="32" stroke="#00ffff" stroke-width="4"/>
+        <rect x="78" y="85" width="16" height="8" fill="#00ffff"/>
+        <rect x="106" y="85" width="16" height="8" fill="#00ffff"/>
+        <path d="M60 150 Q100 120 140 150" stroke="#00ffff" stroke-width="4"/>
+        <rect x="70" y="120" width="60" height="12" fill="#00ffff"/>
+      </svg>
+    </div>
+
+    <!-- TEXT -->
+    <div>
+      <h1>About Me</h1>
+      <p>
+        I am a Computer Science student focused on penetration testing and cybersecurity.
+        My work revolves around understanding attacker behavior, identifying vulnerabilities,
+        and strengthening systems through ethical hacking techniques.
+      </p>
+      <p>
+        I actively explore red teaming, network analysis, and software development while
+        continuously improving my problem-solving capabilities in real-world security scenarios.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- INTERESTS -->
+  <div class="interests">
+
+    <div class="interests-title">
+      <h2>INTERESTED IN</h2>
+      <span></span>
+    </div>
+
+    <div class="interest-item">
+      <div class="icon yellow">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M2 12h20M12 3v18"/>
+        </svg>
+      </div>
+      <span>Penetration Testing</span>
+    </div>
+
+    <div class="interest-item">
+      <div class="icon blue">
+        <svg viewBox="0 0 24 24">
+          <ellipse cx="12" cy="5" rx="8" ry="3"/>
+          <path d="M4 5v7c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/>
+          <path d="M4 12v7c0 1.7 3.6 3 8 3s8-1.3 8-3v-7"/>
+        </svg>
+      </div>
+      <span>SOC Analyst</span>
+    </div>
+
+    <div class="interest-item">
+      <div class="icon pink">
+        <svg viewBox="0 0 24 24">
+          <rect x="4" y="3" width="14" height="18"/>
+          <circle cx="17" cy="17" r="4"/>
+          <path d="M20 20l3 3"/>
+        </svg>
+      </div>
+      <span>Vulnerabilities Assessments</span>
+    </div>
+
+    <div class="interest-item">
+      <div class="icon green">
+        <svg viewBox="0 0 24 24">
+          <rect x="4" y="11" width="16" height="10"/>
+          <path d="M8 11V7a4 4 0 0 1 8 0v4"/>
+        </svg>
+      </div>
+      <span>Cyber Security</span>
+    </div>
+
+    <div class="interest-item">
+      <div class="icon neon">
+        <svg viewBox="0 0 24 24">
+          <path d="M8 16l-4-4 4-4"/>
+          <path d="M16 8l4 4-4 4"/>
+        </svg>
+      </div>
+      <span>Red Teaming</span>
+    </div>
+
+    <div class="interest-item">
+      <div class="icon red">
+        <svg viewBox="0 0 24 24">
+          <rect x="4" y="10" width="3" height="8"/>
+          <rect x="10" y="6" width="3" height="12"/>
+          <rect x="16" y="3" width="3" height="15"/>
+        </svg>
+      </div>
+      <span>Network Analysis</span>
+    </div>
+
+    <div class="interest-item">
+      <div class="icon sky">
+        <svg viewBox="0 0 24 24">
+          <rect x="5" y="3" width="14" height="18"/>
+          <path d="M8 8h8M8 12h8M8 16h6"/>
+        </svg>
+      </div>
+      <span>Software Development</span>
+    </div>
+
+    <div class="interest-item">
+      <div class="icon gold">
+        <svg viewBox="0 0 24 24">
+          <path d="M4 4h16v12H7l-3 3z"/>
+        </svg>
+      </div>
+      <span>Problem Solvings</span>
+    </div>
+
+  </div>
+</section>
+
+<script>
+const btn=document.getElementById("menuBtn");
+const menu=document.getElementById("menuOverlay");
+
+btn.onclick=()=>{
+  btn.classList.toggle("active");
+  menu.classList.toggle("active");
+};
+
+document.querySelectorAll(".menu-nav a").forEach(a=>{
+  a.onclick=()=>{
+    btn.classList.remove("active");
+    menu.classList.remove("active");
+  }
+});
+</script>
+
+</body>
+</html>

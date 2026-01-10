@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experience | Balaji Sangana</title>
+
+<style>
+:root{
+  --bg:#0a0a0a;
+  --card:#071c33;
+  --card2:#0a2540;
+  --text:#ffffff;
+  --muted:#c7c7c7;
+  --theme:#00ffff;
+}
+
+/* ===== GLOBAL ===== */
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Courier New",monospace;
+}
+a{text-decoration:none;color:inherit}
+
+/* ===== LOGO ===== */
+.logo{
+  position:fixed;
+  top:18px;
+  left:26px;
+  font-size:1.4rem;
+  font-weight:600;
+  color:var(--theme);
+  z-index:1002;
+}
+
+/* ===== NAV ===== */
+.navbar{
+  position:fixed;
+  top:0;
+  right:0;
+  padding:20px 30px;
+  display:none;
+  z-index:1000;
+}
+.navbar a{
+  margin-left:15px;
+  position:relative;
+}
+.navbar a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:2px;
+  background:var(--theme);
+  transition:.3s;
+}
+.navbar a:hover::after{width:100%}
+
+/* ===== MOBILE MENU ===== */
+.menu-btn{
+  position:fixed;
+  top:22px;
+  right:24px;
+  width:34px;
+  height:26px;
+  display:none;
+  flex-direction:column;
+  justify-content:space-between;
+  cursor:pointer;
+  z-index:1001;
+}
+.menu-btn span{
+  height:3px;
+  background:var(--theme);
+  transition:.4s;
+}
+.menu-btn.active span:nth-child(1){
+  transform:translateY(11px) rotate(45deg);
+}
+.menu-btn.active span:nth-child(2){opacity:0}
+.menu-btn.active span:nth-child(3){
+  transform:translateY(-11px) rotate(-45deg);
+}
+
+.menu-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(14px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transition:.4s;
+  z-index:1000;
+}
+.menu-overlay.active{
+  opacity:1;
+  visibility:visible;
+}
+.menu-nav a{
+  display:block;
+  font-size:2rem;
+  margin:18px 0;
+  color:var(--theme);
+  text-align:center;
+}
+
+/* ===== EXPERIENCE ===== */
+.experience{
+  padding:120px 8% 80px;
+}
+
+.experience h1{
+  color:var(--theme);
+  font-size:2.6rem;
+  margin-bottom:50px;
+}
+
+/* TIMELINE */
+.timeline{
+  display:flex;
+  flex-direction:column;
+  gap:30px;
+}
+
+.exp-card{
+  background:linear-gradient(90deg,var(--card),var(--card2));
+  padding:26px;
+  border-radius:10px;
+  border-left:4px solid var(--theme);
+}
+
+.exp-card h2{
+  font-size:1.4rem;
+  margin-bottom:6px;
+}
+
+.exp-role{
+  color:var(--theme);
+  font-size:1.05rem;
+  margin-bottom:6px;
+}
+
+.exp-date{
+  color:var(--muted);
+  font-size:.95rem;
+  margin-bottom:14px;
+}
+
+.exp-desc{
+  color:#d4d4d4;
+  line-height:1.7;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(min-width:768px){
+  .navbar{display:block}
+}
+@media(max-width:767px){
+  .menu-btn{display:flex}
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGO -->
+<div class="logo">Balaji Sangana</div>
+
+<!-- NAV -->
+<nav class="navbar">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="education.html">Education</a>
+  <a href="experience.html">Experience</a>
+  <a href="projects.html">Projects</a>
+  <a href="skills.html">Skills</a>
+  <a href="resume.html">Resume</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<div class="menu-btn" id="menuBtn">
+  <span></span><span></span><span></span>
+</div>
+
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="education.html">Education</a>
+    <a href="experience.html">Experience</a>
+    <a href="projects.html">Projects</a>
+    <a href="skills.html">Skills</a>
+    <a href="resume.html">Resume</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section class="experience">
+  <h1>Experience</h1>
+
+  <div class="timeline">
+
+    <!-- FREELANCING -->
+    <div class="exp-card">
+      <h2>Freelancing</h2>
+      <div class="exp-role">Web Applications Penetration Tester & Web Development</div>
+      <div class="exp-date">August 2022 – Present</div>
+      <div class="exp-desc">
+        Web penetration testing focused on identifying vulnerabilities in web
+        applications. Providing detailed vulnerability assessments and assisting
+        in strengthening application security for clients.
+      </div>
+    </div>
+
+    <!-- AND intern -->
+    <div class="exp-card">
+      <h2>AND intern</h2>
+      <div class="exp-role">Cyber Security Intern</div>
+      <div class="exp-date">June 2024 – August 2024</div>
+      <div class="exp-desc">
+        Assisted in performing penetration tests to identify security weaknesses
+        and vulnerabilities in networks, applications, and systems. Supported
+        analysis and remediation processes for critical assets.
+      </div>
+    </div>
+
+    <!-- PALO ALTO -->
+    <div class="exp-card">
+      <h2>Palo Alto Networks</h2>
+      <div class="exp-role">Cyber Security Intern</div>
+      <div class="exp-date">April 2024 – June 2024</div>
+      <div class="exp-desc">
+        Participated in a comprehensive virtual internship program focused on
+        cybersecurity principles, ethical hacking techniques, and vulnerability
+        assessment methodologies.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+const btn=document.getElementById("menuBtn");
+const menu=document.getElementById("menuOverlay");
+
+btn.onclick=()=>{
+  btn.classList.toggle("active");
+  menu.classList.toggle("active");
+};
+
+document.querySelectorAll(".menu-nav a").forEach(a=>{
+  a.onclick=()=>{
+    btn.classList.remove("active");
+    menu.classList.remove("active");
+  }
+});
+</script>
+
+</body>
+</html>
+

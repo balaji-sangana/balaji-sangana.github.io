@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Balaji Sangana | Cyber Security</title>
+
+<style>
+:root{
+  --bg:#0a0a0a;
+  --theme:#00ffff;
+  --text:#ffffff;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body.loading{overflow:hidden}
+body.loaded{
+  overflow:auto;
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Courier New",monospace;
+}
+
+/* ===== LOADER ===== */
+#loader{
+  position:fixed;
+  inset:0;
+  background:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  transition:opacity 1s ease;
+}
+#loader.hide{opacity:0;pointer-events:none}
+
+.loader-lines{display:flex;gap:12px}
+.loader-lines span{
+  width:6px;
+  height:60px;
+  background:var(--theme);
+  animation:wave 1.2s infinite ease-in-out;
+}
+.loader-lines span:nth-child(2){animation-delay:.1s}
+.loader-lines span:nth-child(3){animation-delay:.2s}
+.loader-lines span:nth-child(4){animation-delay:.3s}
+
+@keyframes wave{
+  0%,100%{transform:scaleY(.4)}
+  50%{transform:scaleY(1)}
+}
+
+/* ===== HEADER ===== */
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 26px;
+  z-index:1000;
+}
+.logo{
+  color:var(--theme);
+  font-size:1.5rem;
+  font-weight:600;
+}
+
+/* ===== MENU ===== */
+.menu-btn{
+  width:34px;
+  height:26px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  cursor:pointer;
+}
+.menu-btn span{
+  height:3px;
+  background:var(--theme);
+  transition:.4s;
+}
+.menu-btn.active span:nth-child(1){
+  transform:translateY(11px) rotate(45deg);
+}
+.menu-btn.active span:nth-child(2){opacity:0}
+.menu-btn.active span:nth-child(3){
+  transform:translateY(-11px) rotate(-45deg);
+}
+
+.menu-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(14px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transition:.4s;
+  z-index:999;
+}
+.menu-overlay.active{opacity:1;visibility:visible}
+.menu-nav a{
+  display:block;
+  font-size:2rem;
+  margin:18px 0;
+  color:var(--theme);
+  text-decoration:none;
+  text-align:center;
+}
+
+/* ===== HERO ===== */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding-top:64px;
+}
+.hero h1{
+  font-size:3rem;
+  color:var(--theme);
+  margin-bottom:12px;
+}
+.hero h2{
+  font-size:1.3rem;
+  font-weight:400;
+}
+
+.cursor{animation:blink 1s infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* ===== SOCIAL ICONS (MATCH PREVIOUS FILES) ===== */
+.socials{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  margin-top:26px;
+}
+
+.socials a{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:rgba(255,255,255,.08);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:.3s;
+  color:var(--theme);
+  border: 2px solid var(--theme);
+}
+
+.socials a:hover{
+  background:var(--theme);
+  color:#000;
+}
+
+.socials svg{
+  width:20px;
+  height:20px;
+  fill:currentColor;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(min-width:768px){
+  .menu-btn{display:none}
+}
+</style>
+</head>
+
+<body class="loading">
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-lines">
+    <span></span><span></span><span></span><span></span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="logo" > </div>  
+  <div class="menu-btn" id="menuBtn">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- MENU -->
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="education.html">Education</a>
+    <a href="experience.html">Experience</a>
+    <a href="skills.html">Skills</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="hero">
+  <div>
+    <a href="about.html" style="text-decoration:none;"><h1>Balaji Sangana</h1></a>
+    <h2>I am <span id="typing"></span><span class="cursor">|</span></h2>
+
+    <!-- SOCIAL ICONS -->
+    <div class="socials">
+      <a href="mailto:balajisangana731@gmail.com" title="Email">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 13.5L0 6V4l12 7.5L24 4v2z"/>
+          <path d="M0 6v14h24V6l-12 7.5z"/>
+        </svg>
+      </a>
+      <a href="https://www.linkedin.com/in/balaji-sangana" target="_blank" title="LinkedIn">
+        <svg viewBox="0 0 24 24">
+          <path d="M4 3a2 2 0 100 4 2 2 0 000-4zm1 6H3v12h2V9zm7 0h-2v12h2v-6c0-3 4-3 4 0v6h2v-7c0-5-6-5-6-1V9z"/>
+        </svg>
+      </a>
+      <a href="https://github.com/balaji-sangana" target="_blank" title="GitHub">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 .5A12 12 0 000 12a12 12 0 008.2 11.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 2.6.7 2.6-1.7-.9-.1-1.7-.5-2.1-1.2-.4-.7-.5-1.7-.5-2.6 0-.7.2-1.4.7-2-.1-.2-.3-1 .1-2.1 0 0 .6-.2 2 .7.6-.2 1.3-.3 2-.3s1.4.1 2 .3c1.4-.9 2-.7 2-.7.4 1.1.2 1.9.1 2.1.5.6.7 1.3.7 2 0 2.8-1.7 3.4-3.3 3.6.3.3.6.8.6 1.7v2.6c0 .3.2.7.8.6A12 12 0 0024 12 12 12 0 0012 .5z"/>
+        </svg>
+      </a>
+      <a href="https://x.com/mr__peace" target="_blank" title="X">
+        <svg viewBox="0 0 24 24">
+          <path d="M18.4 2H22l-7.9 9.1L23 22h-7.1l-5.5-6.7L4.7 22H1l8.5-9.8L1 2h7.3l5 6.1L18.4 2z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</main>
+
+<script>
+/* LOADER */
+window.addEventListener("load",()=>{
+  const loader=document.getElementById("loader");
+  loader.classList.add("hide");
+  document.body.classList.remove("loading");
+  document.body.classList.add("loaded");
+  setTimeout(()=>loader.style.display="none",1000);
+});
+
+/* TYPING */
+const words=["Penetration Tester","Researcher","Hacker"];
+let i=0,j=0,del=false;
+const el=document.getElementById("typing");
+setInterval(()=>{
+  el.textContent=words[i].slice(0,j);
+  del?j--:j++;
+  if(!del&&j===words[i].length+1)del=true;
+  if(del&&j===0){del=false;i=(i+1)%words.length}
+},120);
+
+/* MENU */
+const btn=document.getElementById("menuBtn");
+const menu=document.getElementById("menuOverlay");
+btn.onclick=()=>{
+  btn.classList.toggle("active");
+  menu.classList.toggle("active");
+};
+document.querySelectorAll(".menu-nav a").forEach(a=>{
+  a.onclick=()=>{
+    btn.classList.remove("active");
+    menu.classList.remove("active");
+  };
+});
+</script>
+
+</body>
+</html>
