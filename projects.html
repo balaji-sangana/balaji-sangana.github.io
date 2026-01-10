@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects | Balaji Sangana</title>
+
+<!-- SVG favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+  <rect width='100' height='100' fill='black'/>
+  <text x='50%' y='60%' text-anchor='middle'
+        font-size='60'
+        fill='%2300ffff'
+        font-family='monospace'>B</text>
+</svg>">
+
+<style>
+:root{
+  --bg:#0a0a0a;
+  --card:#071c33;
+  --card2:#0a2540;
+  --text:#ffffff;
+  --muted:#c7c7c7;
+  --theme:#00ffff;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Courier New",monospace;
+}
+
+/* ===== LOGO ===== */
+.logo{
+  position:fixed;
+  top:18px;
+  left:26px;
+  font-size:1.4rem;
+  font-weight:600;
+  color:var(--theme);
+  z-index:1002;
+}
+
+/* ===== NAV ===== */
+.navbar{
+  position:fixed;
+  top:0;
+  right:0;
+  padding:20px 30px;
+  display:none;
+  z-index:1000;
+}
+.navbar a{
+  margin-left:22px;
+  position:relative;
+}
+.navbar a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:2px;
+  background:var(--theme);
+  transition:.3s;
+}
+.navbar a:hover::after{width:100%}
+
+/* ===== MOBILE MENU ===== */
+.menu-btn{
+  position:fixed;
+  top:22px;
+  right:24px;
+  width:34px;
+  height:26px;
+  display:none;
+  flex-direction:column;
+  justify-content:space-between;
+  cursor:pointer;
+  z-index:1001;
+}
+.menu-btn span{
+  height:3px;
+  background:var(--theme);
+  transition:.4s;
+}
+.menu-btn.active span:nth-child(1){
+  transform:translateY(11px) rotate(45deg);
+}
+.menu-btn.active span:nth-child(2){opacity:0}
+.menu-btn.active span:nth-child(3){
+  transform:translateY(-11px) rotate(-45deg);
+}
+
+.menu-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(14px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transition:.4s;
+  z-index:1000;
+}
+.menu-overlay.active{
+  opacity:1;
+  visibility:visible;
+}
+.menu-nav a{
+  display:block;
+  font-size:2rem;
+  margin:18px 0;
+  color:var(--theme);
+  text-align:center;
+  text-decoration:none;
+}
+
+/* ===== PAGE ===== */
+.projects{
+  padding:120px 8% 80px;
+}
+.projects h1{
+  color:var(--theme);
+  font-size:2.6rem;
+  margin-bottom:50px;
+}
+
+/* ===== GRID ===== */
+.project-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+
+/* ===== CARD ===== */
+.project-card{
+  background:linear-gradient(90deg,var(--card),var(--card2));
+  padding:26px;
+  border-radius:14px;
+  border-left:4px solid var(--theme);
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.project-card h2{
+  font-size:1.3rem;
+  color:var(--theme);
+}
+
+.project-tag{
+  font-size:.8rem;
+  letter-spacing:2px;
+  color:var(--muted);
+}
+
+.project-desc{
+  color:#d4d4d4;
+  line-height:1.7;
+  font-size:.95rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(min-width:768px){
+  .navbar{display:block}
+}
+@media(max-width:767px){
+  .menu-btn{display:flex}
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGO -->
+<div class="logo">Balaji Sangana</div>
+
+<!-- NAV -->
+<nav class="navbar">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="education.html">Education</a>
+  <a href="experience.html">Experience</a>
+  <a href="skills.html">Skills</a>
+  <a href="projects.html">Projects</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<div class="menu-btn" id="menuBtn">
+  <span></span><span></span><span></span>
+</div>
+
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="education.html">Education</a>
+    <a href="experience.html">Experience</a>
+    <a href="skills.html">Skills</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section class="projects">
+  <h1>Projects</h1>
+
+  <div class="project-grid">
+
+    <!-- PROJECT 1 -->
+    <div class="project-card">
+      <h2>Advanced Web Application Penetration Testing</h2>
+      <div class="project-tag">WEB · CYBER SECURITY</div>
+      <div class="project-desc">
+        Performed in-depth manual and automated penetration testing on real-world
+        web applications. Identified and validated critical vulnerabilities including
+        SQL Injection, Stored & Reflected XSS, CSRF, IDOR, Authentication Bypass,
+        and Access Control flaws. Prepared detailed vulnerability reports with
+        CVSS scoring and remediation guidance.
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="project-card">
+      <h2>DVAT (Damn Vulnerable Android Application) Security Testing</h2>
+      <div class="project-tag">ANDROID · MOBILE SECURITY</div>
+      <div class="project-desc">
+        Conducted security assessment of the DVAT Android application to identify
+        common mobile security issues such as insecure data storage, improper
+        platform usage, hardcoded credentials, insecure API communication,
+        and broken authentication mechanisms.
+      </div>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="project-card">
+      <h2>Domain Enumeration & Reconnaissance</h2>
+      <div class="project-tag">RECON · OSINT · NETWORK</div>
+      <div class="project-desc">
+        Performed comprehensive domain enumeration and reconnaissance to map
+        attack surfaces using passive and active techniques. Identified subdomains,
+        DNS records, IP ranges, open ports, and exposed services using tools such as
+        Subfinder, Amass, Nmap, and custom scripts.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+/* MENU */
+const btn=document.getElementById("menuBtn");
+const menu=document.getElementById("menuOverlay");
+
+btn.onclick=()=>{
+  btn.classList.toggle("active");
+  menu.classList.toggle("active");
+};
+
+document.querySelectorAll(".menu-nav a").forEach(a=>{
+  a.onclick=()=>{
+    btn.classList.remove("active");
+    menu.classList.remove("active");
+  };
+});
+</script>
+
+</body>
+</html>
+
