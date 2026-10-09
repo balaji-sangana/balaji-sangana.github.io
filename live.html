@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloudilya Student Details</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 35px auto;
+      padding: 20px;
+      background: #f5f7fa;
+      color: #222;
+    }
+
+    .container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px #00000012;
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin: 16px 0 6px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 11px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 18px;
+      padding: 11px 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background: #1769aa;
+      color: white;
+      font-size: 14px;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+
+    .student-details {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 12px;
+    }
+
+    .detail-row {
+      display: grid;
+      grid-template-columns: 160px minmax(0, 1fr);
+      gap: 15px;
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .detail-row:last-child {
+      border-bottom: none;
+    }
+
+    .detail-label {
+      font-weight: bold;
+      color: #555;
+    }
+
+    .detail-value {
+      overflow-wrap: anywhere;
+      color: #222;
+    }
+
+    .status-active {
+      color: #067647;
+      font-weight: bold;
+    }
+
+    .status-inactive {
+      color: #b42318;
+      font-weight: bold;
+    }
+
+    .status-message {
+      margin: 12px 0;
+      font-size: 14px;
+      color: #555;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        margin: 10px auto;
+        padding: 12px;
+      }
+
+      .container {
+        padding: 16px;
+      }
+
+      .detail-row {
+        grid-template-columns: 110px minmax(0, 1fr);
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Cloudilya Student Details</h2>
+
+    <form id="apiForm">
+      <input
+        id="url"
+        type="hidden"
+        value="https://kitsg.beessoftware.cloud/CloudilyaLibrary/library/api/Library/SearchStudents"
+      >
+
+      <!-- Supply a valid, authorized token at runtime. -->
+      <input
+        id="token"
+        type="hidden"
+        value="eqjmZ+Rjg8e5uPaEkFczDv71dUeCytav36JG5fBY7adqjrZOErIvNAYRCvk5ZVHdMgg6eb/Hk1KaDsRhIDW3zKo+g/vcuXB0/dJXKQX0ZxHGPXU1JrzVnfr5iERdRLhyAW3+/Pls7L4sZ3bzK1n1et6LPIePhdCjKmSyhn7gbLf9fCJSk2LemHzl2Zma1KMosyZUbdGLCi4adjOGmyHAB3KcCO5Q9hBdnf0ZGJwAD4sHVgasj68ekpWrp1U3DOhUO28q/mugPyQgnV7k/AK2j902Wt/cm5o9y8htgOt+EVRhDS/SuvnM1z3aF52u0lEUNlGas0eTu3sP+6K458ylRvz0Z0L4YYzFDDP2H76JiM0xsOlrINCOpYWKnPoIy0KCo2hgEWdl93EFrTV6OAC2XAOMq/u4zURTm6ExIL8UWBgl0IVs80wpczrxZ4qj+YBwE0PcRucZ1t0qVZvwTwoDLoBQgl0wxcVlrCaIaK5VRFvB2v6npAN0ydLH3ZQQtV9gE8r0htaB2CPy0lQ5PywVsaEXevDUKLWgeY6fDmR/oZOXdKUCqSr8rZizJWcgIgYdnaEecXpAyLxVFRv6ZqziqNsfZuWcEBcgt2DczBpg81+LDVWI30XKDOgqIARkxcOvqKbB1cCAxTXbP5u6DvJ/1gqpJ+QfP1EGMWra9ic0ipkS0IHGhRMXcpvbXLBgB3ftLfaaje6ZKNMJdIw0O85TxXLKvo3EzgxSdC8txBHnKmZg4eM1iKaXvt+axM1Vc+S2aSCFIIcO1OlxKxERyqd9qooJ0P8CYtGoYA6l6kKU019LtM8Ik6c5aWzI/kOSx405oKVY9+6r4A+a7Q/nzlkDr46vkfRUVT1Uqy7EcKTePWoxoULWq61Vh5tKh51sH0o2OvXEAb6ml9VFN3dy7sqQFacQFCEQ2wOIhJlCJzuosuiuAxXZR4JIAGGvU2ES1GZc6Q5bNp1+IcgoSFsW79Qnf+qT/3mlkCjiYFaa4SpHrrNoyRl26d4in0iRPxRmkh2FmfCjAXYfSB9bx1usDsmGvXDCFzpFuZ3FRrsT6//6HbSN/edwVNbCUylEt+i2hZlcCmzSNgx4Us9UqsKuade5ZQ=="
+        autocomplete="off"
+        required
+      >
+
+      <label for="grpCode">Group Code</label>
+      <input
+        id="grpCode"
+        type="text"
+        value="gcet"
+        required
+      >
+
+      <label for="colCode">College Code</label>
+      <input
+        id="colCode"
+        type="text"
+        value="0001"
+        required
+      >
+
+      <label for="hallTicketNo">Hall Ticket Number</label>
+      <input
+        id="hallTicketNo"
+        type="text"
+        value="25R11A0210"
+        required
+      >
+
+      <input id="flag" type="hidden" value="VIEW">
+      <input id="tablevariable" type="hidden" value="[]">
+
+      <button id="sendButton" type="submit">
+        Get Student Details
+      </button>
+    </form>
+
+    <p id="httpStatus" class="status-message" role="status">
+      Ready to send request.
+    </p>
+
+    <h3>Student Information</h3>
+
+    <div id="studentDetails" class="student-details">
+      Student details will appear here.
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById("apiForm");
+    const result = document.getElementById("httpStatus");
+    const sendButton = document.getElementById("sendButton");
+    const studentDetails = document.getElementById("studentDetails");
+
+    const fields = [
+      ["HallTicketNo", "Hall Ticket Number"],
+      ["Name", "Name"],
+      ["Email", "Email"],
+      ["Phone", "Phone"],
+      ["ProgramName", "Program"],
+      ["BranchName", "Branch"],
+      ["SemId", "Semester ID"],
+      ["Semester", "Semester"],
+      ["StatusName", "Status"]
+    ];
+
+    function buildRequestBody() {
+      const tablevariable = JSON.parse(
+        document.getElementById("tablevariable").value
+      );
+
+      if (!Array.isArray(tablevariable)) {
+        throw new Error("Table Variable must be a JSON array.");
+      }
+
+      return {
+        GrpCode: document.getElementById("grpCode").value.trim(),
+        ColCode: document.getElementById("colCode").value.trim(),
+        HallTicketNo: document.getElementById("hallTicketNo").value.trim(),
+        Flag: document.getElementById("flag").value,
+        tablevariable
+      };
+    }
+
+    function showMessage(message) {
+      studentDetails.replaceChildren();
+      studentDetails.textContent = message;
+    }
+
+    function displayStudents(data) {
+      const students = Array.isArray(data) ? data : [data];
+
+      studentDetails.replaceChildren();
+
+      if (students.length === 0) {
+        showMessage("No student records found.");
+        return;
+      }
+
+      students.forEach((student, index) => {
+        if (!student || typeof student !== "object") {
+          return;
+        }
+
+        if (index > 0) {
+          const divider = document.createElement("hr");
+          studentDetails.appendChild(divider);
+        }
+
+        fields.forEach(([key, label]) => {
+          const row = document.createElement("div");
+          row.className = "detail-row";
+
+          const labelElement = document.createElement("div");
+          labelElement.className = "detail-label";
+          labelElement.textContent = label + ":";
+
+          const valueElement = document.createElement("div");
+          valueElement.className = "detail-value";
+          valueElement.textContent = student[key] ?? "—";
+
+          if (key === "StatusName") {
+            const status = String(student[key] ?? "").toLowerCase();
+
+            if (status === "active") {
+              valueElement.classList.add("status-active");
+            } else if (status === "inactive") {
+              valueElement.classList.add("status-inactive");
+            }
+          }
+
+          row.append(labelElement, valueElement);
+          studentDetails.appendChild(row);
+        });
+      });
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const url = document.getElementById("url").value.trim();
+      const token = document.getElementById("token").value.trim();
+
+      if (!token) {
+        result.textContent = "Please enter an authorized Bearer token.";
+        return;
+      }
+
+      let jsonBody;
+
+      try {
+        jsonBody = buildRequestBody();
+      } catch (error) {
+        result.textContent = "Invalid input: " + error.message;
+        return;
+      }
+
+      sendButton.disabled = true;
+      result.textContent = "Loading student details...";
+      showMessage("Waiting for API response.");
+
+      try {
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Authorization": "Bearer " + token,
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(jsonBody)
+        });
+
+        const responseText = await response.text();
+
+        if (!response.ok) {
+          result.textContent =
+            `HTTP Status: ${response.status} ${response.statusText}`;
+          showMessage("The API request failed. Check your authorization and request parameters.");
+          return;
+        }
+
+        let data;
+
+        try {
+          data = JSON.parse(responseText);
+        } catch {
+          result.textContent = `HTTP Status: ${response.status}`;
+          showMessage("The server response was not valid JSON.");
+          return;
+        }
+
+        result.textContent =
+          `HTTP Status: ${response.status} ${response.statusText}`;
+
+        displayStudents(data);
+
+      } catch (error) {
+        result.textContent = "Request failed.";
+        showMessage(
+          "Unable to contact the API. Check connectivity and the API's CORS configuration."
+        );
+      } finally {
+        sendButton.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
